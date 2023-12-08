@@ -1,0 +1,6 @@
+@sbrestaurant.services.API_HostAddress = http://localhost:5172
+
+GET {{sbrestaurant.services.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
