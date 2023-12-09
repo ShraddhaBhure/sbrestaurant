@@ -33,13 +33,7 @@ Implement role-based authorization using .NET Identity. Learn the basics of iden
 ## Getting Started
 Follow these steps to get the project up and running on your local machine:
 
-1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
-2. Navigate to the project directory: `cd your-repo`
-3. Follow the setup instructions in each microservice's README file.
-
-## Contributors
-- John Doe (@johndoe)
-- Jane Smith (@janesmith)
+1. Clone the repository: `git clone [https://github.com/your-username/your-repo](https://github.com/ShraddhaBhure/sbrestauran).git`
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
