@@ -1,64 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microservices-based E-Commerce Application</title>
-</head>
-<body>
+# Microservices-based E-Commerce Application
 
-    <h1>Microservices-based E-Commerce Application</h1>
+Welcome to the Microservices-based E-Commerce application built using .NET 8. This project is designed to provide a comprehensive example of developing a real microservices architecture. It covers foundational elements, authentication and authorization with .NET Identity, and leverages technologies like Entity Framework Core and Ocelot API Gateway.
 
-    <p>Welcome to the Microservices-based E-Commerce application built using .NET 8. This project is designed to provide a comprehensive example of developing a real microservices architecture. It covers foundational elements, authentication and authorization with .NET Identity, and leverages technologies like Entity Framework Core and Ocelot API Gateway.</p>
+## Key Highlights and Topics Covered:
 
-    <h2>Key Highlights and Topics Covered:</h2>
+### Foundational Elements
+Learn the basics of microservices by building a real application step by step.
 
-    <h3>Foundational Elements</h3>
-    <p>Learn the basics of microservices by building a real application step by step.</p>
+### Technology Stack
+Utilize the latest technologies, including .NET 6, .NET API, Ocelot, .NET Identity, Entity Framework Core, and clean architecture principles.
 
-    <h3>Technology Stack</h3>
-    <p>Utilize the latest technologies, including .NET 6, .NET API, Ocelot, .NET Identity, Entity Framework Core, and clean architecture principles.</p>
+### Modules Developed
+1. **Product Microservice**: Manages product information.
+2. **Shopping Cart Microservice**: Handles shopping cart functionalities.
+3. **Ordering Microservice**: Takes care of order processing.
+4. **Payment Microservice**: Manages payment transactions.
+5. **Email Microservice**: Responsible for sending email notifications.
+6. **.NET Identity Microservice**: Handles authentication and authorization.
+7. **Coupon Microservice**: Manages coupon-related functionalities.
+8. **Ocelot Gateway Project**: Implements an Ocelot gateway for effective microservices communication.
+9. **MVC Web Application**: Provides a user interface for the E-Commerce application.
 
-    <h3>Modules Developed</h3>
-    <ul>
-        <li><strong>Product Microservice</strong>: Manages product information.</li>
-        <li><strong>Shopping Cart Microservice</strong>: Handles shopping cart functionalities.</li>
-        <li><strong>Ordering Microservice</strong>: Takes care of order processing.</li>
-        <li><strong>Payment Microservice</strong>: Manages payment transactions.</li>
-        <li><strong>Email Microservice</strong>: Responsible for sending email notifications.</li>
-        <li><strong>.NET Identity Microservice</strong>: Handles authentication and authorization.</li>
-        <li><strong>Coupon Microservice</strong>: Manages coupon-related functionalities.</li>
-        <li><strong>Ocelot Gateway Project</strong>: Implements an Ocelot gateway for effective microservices communication.</li>
-        <li><strong>MVC Web Application</strong>: Provides a user interface for the E-Commerce application.</li>
-    </ul>
+### Communication Patterns
+Explore both asynchronous and synchronous communication between microservices. Utilize Azure Service Bus for Topics and Queues to enhance communication reliability.
 
-    <h3>Communication Patterns</h3>
-    <p>Explore both asynchronous and synchronous communication between microservices. Utilize Azure Service Bus for Topics and Queues to enhance communication reliability.</p>
+### Gateway Implementation
+Implement an Ocelot gateway to facilitate communication between microservices effectively.
 
-    <h3>Gateway Implementation</h3>
-    <p>Implement an Ocelot gateway to facilitate communication between microservices effectively.</p>
+### Authorization and Authentication
+Implement role-based authorization using .NET Identity. Learn the basics of identity server for enhanced security.
 
-    <h3>Authorization and Authentication</h3>
-    <p>Implement role-based authorization using .NET Identity. Learn the basics of identity server for enhanced security.</p>
+## Getting Started
+Follow these steps to get the project up and running on your local machine:
 
-    <h2>Getting Started</h2>
-    <ol>
-        <li>Clone the repository: <code>git clone https://github.com/your-username/your-repo.git</code></li>
-        <li>Navigate to the project directory: <code>cd your-repo</code></li>
-        <li>Follow the setup instructions in each microservice's README file.</li>
-    </ol>
+1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
+2. Navigate to the project directory: `cd your-repo`
+3. Follow the setup instructions in each microservice's README file.
 
-    <h2>Contributors</h2>
-    <ul>
-        <li>John Doe (@johndoe)</li>
-        <li>Jane Smith (@janesmith)</li>
-    </ul>
+## Contributors
+- John Doe (@johndoe)
+- Jane Smith (@janesmith)
 
-    <h2>License</h2>
-    <p>This project is licensed under the MIT License - see the <a href="LICENSE.md">LICENSE.md</a> file for details.</p>
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-    <h2>Acknowledgments</h2>
-    <p>Special thanks to the contributors and the open-source community for making this project possible. If you have any questions or feedback, feel free to open an issue or reach out to us. Happy coding!</p>
-
-</body>
-</html>
+## Acknowledgments
+Special thanks to the contributors and the open-source community for making this project possible. If you have any questions or feedback, feel free to open an issue or reach out to us. Happy coding!
