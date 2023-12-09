@@ -10,13 +10,13 @@ namespace sbrestaurant.services.ProductAPI.Controllers
 {
     [Route("api/product")]
     [ApiController]
-    [Authorize]
+  //  [Authorize]
     public class ProductAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
      
-        private ResponseDtouu _response;
-        private IMapper _mapper;
+        private readonly ResponseDtouu _response;
+        private readonly IMapper _mapper;
 
         public ProductAPIController(AppDbContext db, IMapper mapper)
         {
@@ -68,7 +68,7 @@ namespace sbrestaurant.services.ProductAPI.Controllers
    
 
         [HttpPost]
-        [Authorize(Roles ="ADMIN")]
+       // [Authorize(Roles ="ADMIN")]
         public ResponseDtouu Post([FromBody] ProductDto ProductDto)
         {
             try
@@ -87,7 +87,7 @@ namespace sbrestaurant.services.ProductAPI.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "ADMIN")]
+     //   [Authorize(Roles = "ADMIN")]
         public ResponseDtouu put([FromBody] ProductDto ProductDto)
         {
             try
@@ -107,7 +107,7 @@ namespace sbrestaurant.services.ProductAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-        [Authorize(Roles = "ADMIN")]
+      //  [Authorize(Roles = "ADMIN")]
         public ResponseDtouu Delete(int id)
         {
             try

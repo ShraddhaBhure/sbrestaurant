@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using sbrestaurant.services.API.Dto;
-using sbrestaurant.services.API.Models;
+using sbrestaurant.services.ProductAPI.Models;
+using sbrestaurant.services.ProductAPI.Models.Dto;
 
 namespace sbrestaurant.services.API
 {
@@ -10,7 +10,7 @@ namespace sbrestaurant.services.API
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<CouponDto, Coupon>().ReverseMap();
+                config.CreateMap<ProductDto, Product>().ReverseMap();
             });
 
             return mappingConfig;

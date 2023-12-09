@@ -1,13 +1,13 @@
 using AutoMapper;
-using sbrestaurant.services.ProductAPI.Data;
-using sbrestaurant.services.ProductAPI.Extensions;
+using sbrestaurant.services.ShoppingCartAPI;
+using sbrestaurant.services.ShoppingCartAPI.Data;
+using sbrestaurant.services.ShoppingCartAPI.Extensions;
+using sbrestaurant.services.ShoppingCartAPI.Service;
+using sbrestaurant.services.ShoppingCartAPI.Service.IService;
+using sbrestaurant.services.ShoppingCartAPI.Utility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using sbrestaurant.services.API;
-using Microsoft.Extensions.Options;
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,22 +20,27 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-var mapperConfig = MappingConfig.RegisterMaps();
-var mapperp = new Mapper(mapperConfig);
-
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<BackendApiAuthenticationHttpClientHandler>();
+builder.Services.AddScoped<ICouponService, CouponService>();
+//builder.Services.AddScoped<IMessageBus, MessageBus>();
+builder.Services.AddHttpClient("Product", u => u.BaseAddress =
+new Uri(builder.Configuration["ServiceUrls:ProductAPI"])).AddHttpMessageHandler<BackendApiAuthenticationHttpClientHandler>();
+builder.Services.AddHttpClient("Coupon", u => u.BaseAddress =
+new Uri(builder.Configuration["ServiceUrls:CouponAPI"])).AddHttpMessageHandler<BackendApiAuthenticationHttpClientHandler>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
- //   option.MapType <$sbrestaurant.services.ProductAPI.Models.Dto.ResponseDto > (() => new OpenApiSchema { Type = "object" });
     option.AddSecurityDefinition(name: JwtBearerDefaults.AuthenticationScheme, securityScheme: new OpenApiSecurityScheme
     {
         Name = "Authorization",
         Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
-        Scheme = "bearer"
+        Scheme = "Bearer"
     });
     option.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
@@ -51,16 +56,11 @@ builder.Services.AddSwaggerGen(option =>
         }
     });
 });
-//builder.AddAppAuthetication();
+builder.AddAppAuthetication();
 
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
-app.Use((context, next) =>
-{
-    context.Items["mapper"] = mapperp;
-    return next();
-});
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
@@ -68,7 +68,7 @@ app.UseSwaggerUI(c =>
 {
     if (!app.Environment.IsDevelopment())
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cart Product");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cart API");
         c.RoutePrefix = string.Empty;
     }
 });
@@ -76,9 +76,8 @@ app.UseSwaggerUI(c =>
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseStaticFiles();
-app.MapControllers();
 
+app.MapControllers();
 ApplyMigration();
 app.Run();
 

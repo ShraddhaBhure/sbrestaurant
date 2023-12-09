@@ -1,0 +1,6 @@
+@sbrestaurant.services.ShoppingCartAPI_HostAddress = http://localhost:5110
+
+GET {{sbrestaurant.services.ShoppingCartAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
