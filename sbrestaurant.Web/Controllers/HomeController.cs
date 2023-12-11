@@ -1,3 +1,4 @@
+using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -68,7 +69,7 @@ namespace sbrestaurant.Web.Controllers
             {
                 CartHeader = new CartHeaderDto
                 {
-                //   UserId = User.Claims.Where(u => u.Type == JwtClaimTypes.Subject)?.FirstOrDefault()?.Value
+                  UserId = User.Claims.Where(u => u.Type == JwtClaimTypes.Subject)?.FirstOrDefault()?.Value
                 }
             };
 

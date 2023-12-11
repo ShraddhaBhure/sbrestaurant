@@ -31,3 +31,24 @@
         }
     </div>
 </form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        // Display toast messages on page load
+        $(document).ready(function () {
+            // Success message
+            var successMessage = '@TempData["success"]';
+            if (successMessage) {
+                toastr.success(successMessage);
+            }
+
+            // Error message
+            var errorMessage = '@TempData["error"]';
+            if (errorMessage) {
+                toastr.error(errorMessage);
+            }
+        });
+    </script>
+}
