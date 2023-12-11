@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using sbrestaurant.services.AuthAPI.Models.Dto;
 using sbrestaurant.services.AuthAPI.Service.IService;
 using Microsoft.AspNetCore.Http;
+using restro.messagebus;
 
 namespace sbrestaurant.services.AuthAPI.Controllers
 {
@@ -11,13 +12,14 @@ namespace sbrestaurant.services.AuthAPI.Controllers
 	public class AuthAPIController : ControllerBase
 	{
 		private readonly IAuthService _authService;
-		
-		private readonly IConfiguration _configuration;
+        private readonly IMessageBus _messageBus;
+        private readonly IConfiguration _configuration;
 		protected ResponseDto _response;
-		public AuthAPIController(IAuthService authService,  IConfiguration configuration)
-		{
+		public AuthAPIController(IAuthService authService, IMessageBus messageBus, IConfiguration configuration)
+        {
 			_authService = authService;
-			_configuration = configuration;
+			_messageBus = messageBus;
+            _configuration = configuration;
 			_response = new();
 		}
 
@@ -31,7 +33,7 @@ namespace sbrestaurant.services.AuthAPI.Controllers
 				_response.Message = errorMessage;
 				return BadRequest(_response);
 			}
-		//	await _messageBus.PublishMessage(model.Email, _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue"));
+			await _messageBus.PublishMessage(model.Email, _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue"));
 			return Ok();
 		}
 		[HttpPost("login")]

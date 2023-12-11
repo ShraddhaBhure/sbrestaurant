@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.PortableExecutable;
+using restro.messagebus;
 
 namespace sbrestaurant.services.ShoppingCartAPI.Controllers
 {
@@ -20,12 +21,12 @@ namespace sbrestaurant.services.ShoppingCartAPI.Controllers
         private IProductService _productService;
         private ICouponService _couponService;
         private IConfiguration _configuration;
-       // private readonly IMessageBus _messageBus;
+        private readonly IMessageBus _messageBus;
         public CartAPIController(AppDbContext db,
-            IMapper mapper, IProductService productService, ICouponService couponService,/*IMessageBus messageBus,*/ IConfiguration configuration)
+            IMapper mapper, IProductService productService, ICouponService couponService,IMessageBus messageBus, IConfiguration configuration)
         {
             _db = db;
-          //  _messageBus = messageBus;
+            _messageBus = messageBus;
             _productService = productService;
             this._response = new ResponseDto();
             _mapper = mapper;
@@ -116,7 +117,7 @@ namespace sbrestaurant.services.ShoppingCartAPI.Controllers
         {
             try
             {
-               // await _messageBus.PublishMessage(cartDto, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue"));
+                await _messageBus.PublishMessage(cartDto, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue"));
                 _response.Result = true;
             }
             catch (Exception ex)

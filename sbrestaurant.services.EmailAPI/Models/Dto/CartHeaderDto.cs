@@ -1,5 +1,5 @@
 ﻿
-namespace sbrestaurant.services.ShoppingCartAPI.Models.Dto
+namespace sbrestaurant.services.EmailAPI.Models.Dto
 {
     public class CartHeaderDto
     {
