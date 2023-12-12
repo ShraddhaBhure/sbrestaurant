@@ -17,7 +17,7 @@
             </div>
             <br /><br /><br />
             <hr />
-            @* <div class="col-7">
+            <div class="col-7">
                 <div class="row pt-2">
                     <div class="col-12 py-2">
                         <input asp-for="CartHeader.Name" placeholder="full name..." class="form-control" />
@@ -35,7 +35,7 @@
                         <label class="col-form-label">Order will be ready in 30minutes after placing order. If you place order when restaurant is closed it will be ready next day.</label>
                     </div>
 
-                </div> *@
+                </div>
             </div>
             <div class="col-5">
                 <div class="card mt-2">
@@ -100,22 +100,4 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <script>
-        // Display toast messages on page load
-        $(document).ready(function () {
-            // Success message
-            var successMessage = '@TempData["success"]';
-            if (successMessage) {
-                toastr.success(successMessage);
-            }
-
-            // Error message
-            var errorMessage = '@TempData["error"]';
-            if (errorMessage) {
-                toastr.error(errorMessage);
-            }
-        });
-    </script>
 }

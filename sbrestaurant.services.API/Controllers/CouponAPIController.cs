@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using sbrestaurant.services.API.Data;
-using sbrestaurant.services.API.Dto;
 using sbrestaurant.services.API.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using sbrestaurant.services.API.Dto;
+using Stripe.Checkout;
+using Stripe;
+using sbrestaurant.services.API.Models;
+using Coupon = sbrestaurant.services.API.Models.Coupon;
+
 
 namespace sbrestaurant.services.API.Controllers
 {
@@ -14,7 +18,6 @@ namespace sbrestaurant.services.API.Controllers
     public class CouponAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
-     
         private ResponseDto _response;
         private IMapper _mapper;
 
@@ -26,34 +29,12 @@ namespace sbrestaurant.services.API.Controllers
         }
 
         [HttpGet]
-       
         public ResponseDto Get()
         {
             try
             {
                 IEnumerable<Coupon> objList = _db.Coupons.ToList();
                 _response.Result = _mapper.Map<IEnumerable<CouponDto>>(objList);
-              
-            }
-            catch (Exception ex)
-            {
-               // _response.IsSuccess = false;
-                _response.Message = ex.Message;
-            }
-             return _response;
-           
-        }
-
-
-        [HttpGet]
-        [Route("{id:int}")]
-        public object Get(int id)
-        {
-            try
-            {
-                Coupon obj = _db.Coupons.First(u => u.CouponId == id);
-              
-                  _response.Result = _mapper.Map<CouponDto>(obj);
             }
             catch (Exception ex)
             {
@@ -61,11 +42,24 @@ namespace sbrestaurant.services.API.Controllers
                 _response.Message = ex.Message;
             }
             return _response;
-
         }
 
-
-   
+        [HttpGet]
+        [Route("{id:int}")]
+        public ResponseDto Get(int id)
+        {
+            try
+            {
+                Coupon obj = _db.Coupons.First(u => u.CouponId == id);
+                _response.Result = _mapper.Map<CouponDto>(obj);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+            return _response;
+        }
 
         [HttpGet]
         [Route("GetByCode/{code}")]
@@ -85,15 +79,29 @@ namespace sbrestaurant.services.API.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles ="ADMIN")]
+      //  [Authorize(Roles = "ADMIN")]
         public ResponseDto Post([FromBody] CouponDto couponDto)
         {
             try
             {
                 Coupon obj = _mapper.Map<Coupon>(couponDto);
-                _db.Coupons.Add(obj);   
+                _db.Coupons.Add(obj);
                 _db.SaveChanges();
-                _response.Result = _mapper.Map<CouponDto>(couponDto); 
+
+
+
+                var options = new Stripe.CouponCreateOptions
+                {
+                    AmountOff = (long)(couponDto.DiscountAmount * 100),
+                    Name = couponDto.CouponCode,
+                    Currency = "usd",
+                    Id = couponDto.CouponCode,
+                };
+                var service = new Stripe.CouponService();
+                service.Create(options);
+
+
+                _response.Result = _mapper.Map<CouponDto>(obj);
             }
             catch (Exception ex)
             {
@@ -103,16 +111,18 @@ namespace sbrestaurant.services.API.Controllers
             return _response;
         }
 
+
         [HttpPut]
         [Authorize(Roles = "ADMIN")]
-        public ResponseDto put([FromBody] CouponDto couponDto)
+        public ResponseDto Put([FromBody] CouponDto couponDto)
         {
             try
             {
                 Coupon obj = _mapper.Map<Coupon>(couponDto);
                 _db.Coupons.Update(obj);
                 _db.SaveChanges();
-                _response.Result = _mapper.Map<CouponDto>(couponDto);
+
+                _response.Result = _mapper.Map<CouponDto>(obj);
             }
             catch (Exception ex)
             {
@@ -124,16 +134,20 @@ namespace sbrestaurant.services.API.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-        [Authorize(Roles = "ADMIN")]
+     //   [Authorize(Roles = "ADMIN")]
         public ResponseDto Delete(int id)
         {
             try
             {
-                Coupon obj = _db.Coupons.First(u=> u.CouponId== id);    
+                Coupon obj = _db.Coupons.First(u => u.CouponId == id);
                 _db.Coupons.Remove(obj);
                 _db.SaveChanges();
 
-               
+
+                var service = new Stripe.CouponService();
+                service.Delete(obj.CouponCode);
+
+
             }
             catch (Exception ex)
             {

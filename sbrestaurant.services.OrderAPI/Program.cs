@@ -1,40 +1,36 @@
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using sbrestaurant.services.API.Data;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.Globalization;
+using sbrestaurant.services.OrderAPI;
+using sbrestaurant.services.OrderAPI.Data;
+using sbrestaurant.services.OrderAPI.Extensions;
+using sbrestaurant.services.OrderAPI.Utility;
+using sbrestaurant.services.OrderAPI.Service;
+using sbrestaurant.services.OrderAPI.Service.IService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using sbrestaurant.services.API;
-using Microsoft.AspNetCore.Authentication;
-using sbrestaurant.Web.Service;
-using sbrestaurant.services.ProductAPI.Extensions;
-
-
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
+using restro.messagebus;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
-//usesing mapping config
-
-
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-builder.Services.AddControllers(); 
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<BackendApiAuthenticationHttpClientHandler>();
+builder.Services.AddScoped<IMessageBus, MessageBus>();
+builder.Services.AddHttpClient("Product", u => u.BaseAddress =
+new Uri(builder.Configuration["ServiceUrls:ProductAPI"])).AddHttpMessageHandler<BackendApiAuthenticationHttpClientHandler>();
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddScoped<TokenProvider>();
 builder.Services.AddSwaggerGen(option =>
 {
     option.AddSecurityDefinition(name: JwtBearerDefaults.AuthenticationScheme, securityScheme: new OpenApiSecurityScheme
@@ -60,6 +56,7 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 builder.AddAppAuthetication();
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -75,6 +72,7 @@ app.UseSwaggerUI(c =>
     }
 });
 Stripe.StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -83,7 +81,7 @@ app.MapControllers();
 ApplyMigration();
 app.Run();
 
-//for pending migrations
+
 void ApplyMigration()
 {
     using (var scope = app.Services.CreateScope())

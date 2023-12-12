@@ -2,7 +2,7 @@
 using sbrestaurant.Web.Service.IService;
 using sbrestaurant.Web.Utility;
 
-namespace Mango.Web.Service
+namespace sbrestaurant.Web.Service
 {
     public class CartService : ICartService
     {
