@@ -25,7 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restro.messagebus", "restro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sbrestaurant.services.EmailAPI", "sbrestaurant.services.EmailAPI\sbrestaurant.services.EmailAPI.csproj", "{7B7E3124-942B-4BC4-BEDA-0E80353C211D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sbrestaurant.services.OrderAPI", "sbrestaurant.services.OrderAPI\sbrestaurant.services.OrderAPI.csproj", "{94582010-29A0-488B-A534-D48453CAEF6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sbrestaurant.services.OrderAPI", "sbrestaurant.services.OrderAPI\sbrestaurant.services.OrderAPI.csproj", "{94582010-29A0-488B-A534-D48453CAEF6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{7223B21F-7CEA-41AE-A5F5-3044A374D755}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sbrestaurant.services.RewardAPI", "sbrestaurant.services.RewardAPI\sbrestaurant.services.RewardAPI.csproj", "{5D1B3941-0269-480E-A488-BF8D25BF0169}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +69,10 @@ Global
 		{94582010-29A0-488B-A534-D48453CAEF6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94582010-29A0-488B-A534-D48453CAEF6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94582010-29A0-488B-A534-D48453CAEF6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D1B3941-0269-480E-A488-BF8D25BF0169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1B3941-0269-480E-A488-BF8D25BF0169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1B3941-0269-480E-A488-BF8D25BF0169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1B3941-0269-480E-A488-BF8D25BF0169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +86,7 @@ Global
 		{D203EB55-6655-46EC-BF91-0989D4DAC6D9} = {79C7096D-54C9-445A-BF06-17D9403F5F52}
 		{7B7E3124-942B-4BC4-BEDA-0E80353C211D} = {325698CF-998D-470E-9B86-1FC799023464}
 		{94582010-29A0-488B-A534-D48453CAEF6B} = {325698CF-998D-470E-9B86-1FC799023464}
+		{5D1B3941-0269-480E-A488-BF8D25BF0169} = {325698CF-998D-470E-9B86-1FC799023464}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE3D2B09-3AE1-412D-931E-7153CC612E96}

@@ -1,24 +1,31 @@
 ﻿var dataTable;
 
+//$(document).ready(function () {
+//    var url = window.location.search;
+//    if (url.includes("approved")) {
+//        loadDataTable("approved");
+//    }
+//    else {
+//        if (url.includes("readyforpickup")) {
+//            loadDataTable("readyforpickup");
+//        }
+//        else {
+//            if (url.includes("cancelled")) {
+//                loadDataTable("cancelled");
+//            }
+//            else {
+//                loadDataTable("all");
+//            }
+//        }
+//    }
+//});
+
+
+
 $(document).ready(function () {
-    var url = window.location.search;
-    if (url.includes("approved")) {
-        loadDataTable("approved");
-    }
-    else {
-        if (url.includes("readyforpickup")) {
-            loadDataTable("readyforpickup");
-        }
-        else {
-            if (url.includes("cancelled")) {
-                loadDataTable("cancelled");
-            }
-            else {
-                loadDataTable("all");
-            }
-        }
-    }
+    loadDataTable();
 });
+
 
 function loadDataTable(status) {
     dataTable = $('#tblData').DataTable({

@@ -28,15 +28,15 @@ namespace sbrestaurant.services.EmailAPI.Messaging
             serviceBusConnectionString = _configuration.GetValue<string>("ServiceBusConnectionString");
             emailCartQueue = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue");
           registerUserQueue = _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue");
-           // orderCreated_Topic = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreatedTopic");
-           // orderCreated_Email_Subscription = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreated_Email_Subscription");
+            orderCreated_Topic = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreatedTopic");
+           orderCreated_Email_Subscription = _configuration.GetValue<string>("TopicAndQueueNames:OrderCreated_Email_Subscription");
 
             var client = new ServiceBusClient(serviceBusConnectionString);
             _emailCartProcessor = client.CreateProcessor(emailCartQueue);
            _registerUserProcessor = client.CreateProcessor(registerUserQueue);
-       //     _emailOrderPlacedProcessor = client.CreateProcessor(orderCreated_Topic,orderCreated_Email_Subscription);
+           _emailOrderPlacedProcessor = client.CreateProcessor(orderCreated_Topic,orderCreated_Email_Subscription);
         }
-
+                                     
         public async Task Start()
         {
             _emailCartProcessor.ProcessMessageAsync += OnEmailCartRequestReceived;
@@ -47,9 +47,9 @@ namespace sbrestaurant.services.EmailAPI.Messaging
            _registerUserProcessor.ProcessErrorAsync += ErrorHandler;
             await _registerUserProcessor.StartProcessingAsync();
 
-          ///  _emailOrderPlacedProcessor.ProcessMessageAsync += OnOrderPlacedRequestReceived;
-         //   _emailOrderPlacedProcessor.ProcessErrorAsync += ErrorHandler;
-        //    await _emailOrderPlacedProcessor.StartProcessingAsync();
+            _emailOrderPlacedProcessor.ProcessMessageAsync += OnOrderPlacedRequestReceived;
+           _emailOrderPlacedProcessor.ProcessErrorAsync += ErrorHandler;
+           await _emailOrderPlacedProcessor.StartProcessingAsync();
         }
 
        
@@ -62,8 +62,8 @@ namespace sbrestaurant.services.EmailAPI.Messaging
             await _registerUserProcessor.StopProcessingAsync();
            await _registerUserProcessor.DisposeAsync();
 
-          //  await _emailOrderPlacedProcessor.StopProcessingAsync();
-          //  await _emailOrderPlacedProcessor.DisposeAsync();
+           await _emailOrderPlacedProcessor.StopProcessingAsync();
+           await _emailOrderPlacedProcessor.DisposeAsync();
         }
 
         private async Task OnEmailCartRequestReceived(ProcessMessageEventArgs args)

@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <hr />
-                        @foreach(var cartObj in Model.CartDetails){
+                         @foreach(var cartObj in Model.CartDetails){
                         <div class="row h-100">
                             <div class="col-6">
                                 <span style="font-size:20px">@cartObj.Product.Name</span>
@@ -70,7 +70,9 @@
                             </div>
                         </div>
                         <hr />
-                        }
+                        } 
+
+
                         <div class="row">
                             <div class="col-12 text-center pr-4 text-danger">
                                 Order Total :  @Model.CartHeader.CartTotal.ToString("c") <br />

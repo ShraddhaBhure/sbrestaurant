@@ -46,7 +46,7 @@ options.LoginPath = "/Auth/Login";
 options.AccessDeniedPath = "/Auth/AccessDenied";
 });
 
-        
+//Stripe.StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 var app = builder.Build();
 
