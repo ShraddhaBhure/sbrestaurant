@@ -1,6 +1,6 @@
-﻿namespace sbrestaurant.services.ProductAPI.Models.Dto.newRest
+﻿namespace sbrestaurant.services.ProductAPI.Models.Dto
 {
-    public class ResponseDtouu
+    public class ResponseDto
     {
         public object? Result { get; set; }
         public bool IsSuccess { get; set; } = true;

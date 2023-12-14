@@ -2,9 +2,9 @@
 
 namespace sbrestaurant.services.AuthAPI.Service.IService
 {
-    public interface IJwtTokenGenerator
-    {
+	public interface IJwtTokenGenerator
+	{
 		string GenerateToken(ApplicationUser applicationUser, IEnumerable<string> roles);
-	
+
 	}
 }

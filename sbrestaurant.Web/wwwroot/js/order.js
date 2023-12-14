@@ -1,30 +1,26 @@
 ﻿var dataTable;
 
-//$(document).ready(function () {
-//    var url = window.location.search;
-//    if (url.includes("approved")) {
-//        loadDataTable("approved");
-//    }
-//    else {
-//        if (url.includes("readyforpickup")) {
-//            loadDataTable("readyforpickup");
-//        }
-//        else {
-//            if (url.includes("cancelled")) {
-//                loadDataTable("cancelled");
-//            }
-//            else {
-//                loadDataTable("all");
-//            }
-//        }
-//    }
-//});
-
-
-
 $(document).ready(function () {
-    loadDataTable();
+    var url = window.location.search;
+    if (url.includes("approved")) {
+        loadDataTable("approved");
+    }
+    else {
+        if (url.includes("readyforpickup")) {
+            loadDataTable("readyforpickup");
+        }
+        else {
+            if (url.includes("cancelled")) {
+                loadDataTable("cancelled");
+            }
+            else {
+                loadDataTable("all");
+            }
+        }
+    }
 });
+
+
 
 
 function loadDataTable(status) {

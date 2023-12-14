@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{325698CF-998D-470E-9B86-1FC799023464}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sbrestaurant.services.API", "sbrestaurant.services.API\sbrestaurant.services.API.csproj", "{6C1405C5-D569-476B-8CA8-407D6C05C9A8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sbrestaurant.Web", "sbrestaurant.Web\sbrestaurant.Web.csproj", "{6820BA6D-6875-4323-8D38-429AB25BC43F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sbrestaurant.services.AuthAPI", "sbrestaurant.services.AuthAPI\sbrestaurant.services.AuthAPI.csproj", "{AE4F6919-DE38-45B6-8790-6AAD14699675}"
@@ -29,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sbrestaurant.services.Order
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{7223B21F-7CEA-41AE-A5F5-3044A374D755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sbrestaurant.services.RewardAPI", "sbrestaurant.services.RewardAPI\sbrestaurant.services.RewardAPI.csproj", "{5D1B3941-0269-480E-A488-BF8D25BF0169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sbrestaurant.services.RewardAPI", "sbrestaurant.services.RewardAPI\sbrestaurant.services.RewardAPI.csproj", "{5D1B3941-0269-480E-A488-BF8D25BF0169}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sbrestaurant.services.CouponAPI", "sbrestaurant.services.CouponAPI\sbrestaurant.services.CouponAPI.csproj", "{F4E8B89C-065D-483B-BAA8-72F70BD1C450}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6C1405C5-D569-476B-8CA8-407D6C05C9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C1405C5-D569-476B-8CA8-407D6C05C9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C1405C5-D569-476B-8CA8-407D6C05C9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C1405C5-D569-476B-8CA8-407D6C05C9A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6820BA6D-6875-4323-8D38-429AB25BC43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6820BA6D-6875-4323-8D38-429AB25BC43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6820BA6D-6875-4323-8D38-429AB25BC43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,12 +69,15 @@ Global
 		{5D1B3941-0269-480E-A488-BF8D25BF0169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D1B3941-0269-480E-A488-BF8D25BF0169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D1B3941-0269-480E-A488-BF8D25BF0169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E8B89C-065D-483B-BAA8-72F70BD1C450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E8B89C-065D-483B-BAA8-72F70BD1C450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E8B89C-065D-483B-BAA8-72F70BD1C450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E8B89C-065D-483B-BAA8-72F70BD1C450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6C1405C5-D569-476B-8CA8-407D6C05C9A8} = {325698CF-998D-470E-9B86-1FC799023464}
 		{6820BA6D-6875-4323-8D38-429AB25BC43F} = {AE9B90C9-332F-474A-A031-131178E83E8C}
 		{AE4F6919-DE38-45B6-8790-6AAD14699675} = {325698CF-998D-470E-9B86-1FC799023464}
 		{BB475289-C568-41EF-B89A-3083868059A2} = {325698CF-998D-470E-9B86-1FC799023464}
@@ -87,6 +86,7 @@ Global
 		{7B7E3124-942B-4BC4-BEDA-0E80353C211D} = {325698CF-998D-470E-9B86-1FC799023464}
 		{94582010-29A0-488B-A534-D48453CAEF6B} = {325698CF-998D-470E-9B86-1FC799023464}
 		{5D1B3941-0269-480E-A488-BF8D25BF0169} = {325698CF-998D-470E-9B86-1FC799023464}
+		{F4E8B89C-065D-483B-BAA8-72F70BD1C450} = {325698CF-998D-470E-9B86-1FC799023464}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE3D2B09-3AE1-412D-931E-7153CC612E96}

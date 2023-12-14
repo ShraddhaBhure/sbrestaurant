@@ -14,7 +14,7 @@ namespace sbrestaurant.services.AuthAPI.Service
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly IJwtTokenGenerator _jwtTokenGenerator;
-	
+
 		public AuthService(AppDbContext db
 			, IJwtTokenGenerator jwtTokenGenerator, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
 		{
@@ -24,7 +24,7 @@ namespace sbrestaurant.services.AuthAPI.Service
 			_jwtTokenGenerator = jwtTokenGenerator;
 
 		}
-		
+
 
 		public async Task<string> Register(RegistrationRequestDto registrationRequestDto)
 		{
@@ -117,8 +117,8 @@ namespace sbrestaurant.services.AuthAPI.Service
 			return loginResponseDto;
 		}
 
-		
 
-		
+
+
 	}
 }

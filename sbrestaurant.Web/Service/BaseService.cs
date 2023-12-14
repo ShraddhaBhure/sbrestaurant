@@ -21,7 +21,7 @@ namespace sbrestaurant.Web.Service
         {
             try
             {
-                HttpClient client = _httpClientFactory.CreateClient("MangoAPI");
+                HttpClient client = _httpClientFactory.CreateClient("RestaurantAPI");
                 HttpRequestMessage message = new();
                 if (requestDto.ContentType == ContentType.MultipartFormData)
                 {

@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using restro.messagebus;
 using sbrestaurant.services.AuthAPI.Models.Dto;
 using sbrestaurant.services.AuthAPI.Service.IService;
-using Microsoft.AspNetCore.Http;
-using restro.messagebus;
 
 namespace sbrestaurant.services.AuthAPI.Controllers
 {
@@ -12,14 +10,14 @@ namespace sbrestaurant.services.AuthAPI.Controllers
 	public class AuthAPIController : ControllerBase
 	{
 		private readonly IAuthService _authService;
-        private readonly IMessageBus _messageBus;
-        private readonly IConfiguration _configuration;
+		private readonly IMessageBus _messageBus;
+		private readonly IConfiguration _configuration;
 		protected ResponseDto _response;
 		public AuthAPIController(IAuthService authService, IMessageBus messageBus, IConfiguration configuration)
-        {
+		{
 			_authService = authService;
 			_messageBus = messageBus;
-            _configuration = configuration;
+			_configuration = configuration;
 			_response = new();
 		}
 

@@ -24,8 +24,4 @@
 	
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\sbrestaurant.services.API\sbrestaurant.services.API.csproj" />
-  </ItemGroup>
-
 </Project>

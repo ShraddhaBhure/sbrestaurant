@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
+using restro.messagebus;
 using sbrestaurant.services.AuthAPI.Data;
 using sbrestaurant.services.AuthAPI.Models;
 using sbrestaurant.services.AuthAPI.Service;
 using sbrestaurant.services.AuthAPI.Service.IService;
-using restro.messagebus;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
