@@ -36,7 +36,7 @@ namespace sbrestaurant.services.OrderAPI.Controllers
             _configuration = configuration;
         }
 
-      // [Authorize]
+    //   [Authorize]
         [HttpGet("GetOrders")]
         public ResponseDto? Get(string? userId = "")
         {
@@ -61,7 +61,7 @@ namespace sbrestaurant.services.OrderAPI.Controllers
             return _response;
         }
 
-      //[Authorize]
+     // [Authorize]
         [HttpGet("GetOrder/{id:int}")]
         public ResponseDto? Get(int id)
         {
@@ -79,11 +79,9 @@ namespace sbrestaurant.services.OrderAPI.Controllers
         }
 
 
- /// <summary>
- /// [Authorize]
- /// </summary>
- /// <param name="cartDto"></param>
- /// <returns></returns>
+
+  //[Authorize]
+ 
         [HttpPost("CreateOrder")]
         public async Task<ResponseDto> CreateOrder([FromBody] CartDto cartDto)
         {
@@ -109,7 +107,7 @@ namespace sbrestaurant.services.OrderAPI.Controllers
         }
 
 
-       //[Authorize]
+     //  [Authorize]
         [HttpPost("CreateStripeSession")]
         public async Task<ResponseDto> CreateStripeSession([FromBody] StripeRequestDto stripeRequestDto)
         {
@@ -174,7 +172,7 @@ namespace sbrestaurant.services.OrderAPI.Controllers
         }
 
 
-  ///[Authorize]
+ // [Authorize]
         [HttpPost("ValidateStripeSession")]
         public async Task<ResponseDto> ValidateStripeSession([FromBody] int orderHeaderId)
         {
@@ -215,8 +213,7 @@ namespace sbrestaurant.services.OrderAPI.Controllers
             return _response;
         }
 
-
-    //   [Authorize]
+ // [Authorize]
         [HttpPost("UpdateOrderStatus/{orderId:int}")]
         public async Task<ResponseDto> UpdateOrderStatus(int orderId, [FromBody] string newStatus)
         {

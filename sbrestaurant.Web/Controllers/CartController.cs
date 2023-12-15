@@ -44,8 +44,8 @@ namespace sbrestaurant.Web.Controllers
             var response = await _orderService.CreateOrder(cart);
             OrderHeaderDto orderHeaderDto = JsonConvert.DeserializeObject<OrderHeaderDto>(Convert.ToString(response.Result));
 
-            if (response != null && response.IsSuccess)
-           {
+           // if (response != null && response.IsSuccess)
+           ///{
                ////////////// get stripe session and redirect to stripe to place order
 
 
@@ -65,7 +65,7 @@ namespace sbrestaurant.Web.Controllers
 
 
 
-           }
+          // }
             return View();
         }
 
