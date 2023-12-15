@@ -1,7 +1,7 @@
 # Microservices-based E-Commerce Application
 
 Welcome to the Microservices-based E-Commerce application built using .NET 8. This project is designed to provide a comprehensive example of developing a real microservices architecture. It covers foundational elements, authentication and authorization with .NET Identity, and leverages technologies like Entity Framework Core and Ocelot API Gateway.
-![Project Image](https://github.com/ShraddhaBhure/sbskinet/blob/main/projects_images/skinetbasket.png)
+![Project Image](https://github.com/ShraddhaBhure/sbrestaurant/blob/master/sbrestaurant.Web/wwwroot/ProjectImages/resto1.PNG)
 ## Key Highlights and Topics Covered:
 
 ### Foundational Elements
