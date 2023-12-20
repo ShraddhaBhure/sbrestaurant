@@ -1,17 +1,9 @@
-# Microservices-based E-Commerce Application
-
-Welcome to the Microservices-based E-Commerce application built using .NET 8. This project is designed to provide a comprehensive example of developing a real microservices architecture. It covers foundational elements, authentication and authorization with .NET Identity, and leverages technologies like Entity Framework Core and Ocelot API Gateway.
-![Project Image](https://github.com/ShraddhaBhure/sbrestaurant/blob/master/sbrestaurant.Web/wwwroot/ProjectImages/resto1.PNG)
-## Key Highlights and Topics Covered:
-
-# E-Commerce Platform with Azure and Stripe Integration
-
+# Microservices-based E-Commerce Application with Azure and Stripe Integration
 ## Overview
+Welcome to the Microservices-based E-Commerce application built using .NET 8. This project is developed using  Azure services and integrated with Stripe for secure payment processing. and designed to provide a comprehensive example of developing a real microservices architecture. It covers foundational elements, authentication and authorization with .NET Identity, and leverages technologies like Entity Framework Core and Ocelot API Gateway, product management, shopping cart functionality, order processing, payment transactions, email notifications, user authentication,.
+![Project Image](https://github.com/ShraddhaBhure/sbrestaurant/blob/master/sbrestaurant.Web/wwwroot/ProjectImages/resto1.PNG)
 
-This project is an e-commerce platform built on Azure services and integrated with Stripe for secure payment processing. The platform is designed with microservices architecture to ensure scalability, flexibility, and modularity. It includes modules for product management, shopping cart functionality, order processing, payment transactions, email notifications, user authentication, and more.
-
-## Modules Developed
-
+## Key Highlights and Modules Developed:
 1. **Product Microservice:**
    - Manages product information.
    - Interacts with Azure SQL Server for data storage.
@@ -64,23 +56,6 @@ This project is an e-commerce platform built on Azure services and integrated wi
    - Deploy microservices on Azure App Service.
    - Configure Azure SQL Server, Queues, Topics, and Service Bus.
    - Update application settings for production deployment.
-
-## Usage
-
-1. Access the MVC Web Application.
-2. Browse products, add them to the cart, and place orders.
-3. Make payments securely using the integrated Stripe functionality.
-4. Receive email notifications for payment confirmation.
-
-## Contributing
-
-Contributions are welcome! Please follow our [Contribution Guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-
 ## Getting Started
 Follow these steps to get the project up and running on your local machine:
 
